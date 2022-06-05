@@ -16,7 +16,11 @@ const CountryList = () => {
     <StyledCountryList>
       {countries.length !== 0 &&
         countries.map((country, index) => {
-          return <CountryCard key={index} data={country} />;
+          return (
+            <li key={index}>
+              <CountryCard data={country} />
+            </li>
+          );
         })}
     </StyledCountryList>
   );

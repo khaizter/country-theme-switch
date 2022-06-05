@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const StyledCountryCard = styled.li`
-  list-style: none;
-  margin: 0;
-  padding: 0;
+export const StyledCountryCard = styled(Link)`
+  text-decoration: none;
+  color: inherit;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 20px -15px;
