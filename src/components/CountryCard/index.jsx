@@ -1,5 +1,10 @@
 import React from "react";
-import { StyledCountryCard, Thumbnail, Details } from "./CountryCard.styled";
+import {
+  MainContainer,
+  Thumbnail,
+  DetailsSection,
+  Label,
+} from "./CountryCard.elements";
 
 const CountryCard = ({ data }) => {
   const clickHandler = () => {
@@ -7,24 +12,24 @@ const CountryCard = ({ data }) => {
   };
 
   return (
-    <StyledCountryCard to={`/countries/${data.cca2}`} onClick={clickHandler}>
-      <Thumbnail src={data.flags.png} alt={`${data.name.official} flag`} />
-      <Details>
+    <MainContainer to={`/countries/${data.cca2}`} onClick={clickHandler}>
+      <Thumbnail src={data.flags.png} alt={`${data.name.common} flag`} />
+      <DetailsSection>
         <h3>{data.name.common}</h3>
         <p>
-          <strong>Population: </strong>
+          <Label>Population: </Label>
           {data.population}
         </p>
         <p>
-          <strong>Region: </strong>
+          <Label>Region: </Label>
           {data.region}
         </p>
         <p>
-          <strong>Capital: </strong>
+          <Label>Capital: </Label>
           {data.capital}
         </p>
-      </Details>
-    </StyledCountryCard>
+      </DetailsSection>
+    </MainContainer>
   );
 };
 

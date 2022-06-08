@@ -4,7 +4,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 2.5rem 1.25rem;
-  box-shadow: 0 0 20px -15px;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 `;
 
 export const Logo = styled.a`

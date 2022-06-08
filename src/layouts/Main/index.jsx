@@ -10,7 +10,10 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/countries" />} />
         <Route path="/countries" element={<CountriesPage />} />
-        <Route path="/countries/:countryId" element={<CountryDetailsPage />} />
+        <Route
+          path="/countries/:countryCode"
+          element={<CountryDetailsPage />}
+        />
       </Routes>
     </MainContainer>
   );
