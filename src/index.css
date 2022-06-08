@@ -1,7 +1,15 @@
+:root {
+  --very-dark-blue-fg: hsl(200, 15%, 8%);
+  --white: hsl(0, 0%, 100%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-dark-blue-bg: hsl(207, 26%, 17%);
+  --dark-blue: hsl(209, 23%, 22%);
+  --dark-gray: hsl(0, 0%, 52%);
+}
+
 html {
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {

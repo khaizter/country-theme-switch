@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 export const MainContainer = styled(Link)`
   display: block;
   text-decoration: none;
-  color: inherit;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px -5px rgb(0 0 0 / 20%);
+  background-color: ${(props) => props.theme.element};
+  color: inherit;
 `;
 
 export const Thumbnail = styled.img`
@@ -17,7 +18,6 @@ export const Thumbnail = styled.img`
 `;
 
 export const DetailsSection = styled.div`
-  background-color: white;
   padding: 1rem 1.875rem;
   padding-bottom: 2.75rem;
   p {

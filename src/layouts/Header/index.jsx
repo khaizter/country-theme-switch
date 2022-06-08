@@ -1,16 +1,16 @@
 import React from "react";
-import { HeaderContainer, Logo, Toggle } from "./Header.elements";
+import { MainContainer, Logo, Toggle } from "./Header.elements";
 import { BsMoon } from "react-icons/bs";
 
-const Header = () => {
+const Header = ({ onToggleTheme }) => {
   return (
-    <HeaderContainer>
+    <MainContainer>
       <Logo href="#">Where in the world?</Logo>
-      <Toggle>
+      <Toggle onClick={onToggleTheme}>
         <BsMoon fontSize="1.5rem" />
         Dark Mode
       </Toggle>
-    </HeaderContainer>
+    </MainContainer>
   );
 };
 

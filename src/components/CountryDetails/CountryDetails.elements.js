@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   font-size: 16px;
+  color: ${(props) => props.theme.foreground};
 `;
 
 export const DetailsContainer = styled.div`
@@ -18,12 +19,13 @@ export const Button = styled(Link)`
   gap: 1.375rem;
   width: max-content;
   text-decoration: none;
-  color: inherit;
   font-weight: ${(props) => (props.lower ? "300" : "600")};
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
   box-shadow: 0 0 ${(props) => (props.lower ? "5px" : "20px")}
     rgba(0, 0, 0, 0.2);
+  background-color: ${(props) => props.theme.element};
+  color: inherit;
 `;
 
 export const Flag = styled.img`

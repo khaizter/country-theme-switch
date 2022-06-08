@@ -9,7 +9,7 @@ const SearchBar = ({ query, onQueryChange, placeholder }) => {
 
   return (
     <MainContainer>
-      <AiOutlineSearch fontSize="1.5rem" color="hsl(0, 0%, 52%)" />
+      <AiOutlineSearch fontSize="1.5rem" />
       <Input value={query} onChange={inputHandler} placeholder={placeholder} />
     </MainContainer>
   );

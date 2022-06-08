@@ -5,4 +5,6 @@ export const MainContainer = styled.main`
   flex-direction: column;
   padding: 1.875rem 1.25rem;
   gap: 2.5rem;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.foreground};
 `;

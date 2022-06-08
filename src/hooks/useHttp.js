@@ -29,7 +29,7 @@ const useHttp = (_request, fetchOnStart = true) => {
     };
 
     fetchData();
-  }, [request]);
+  }, [request, canFetch]);
 
   return [data, isLoading, isError, setRequest];
 };
