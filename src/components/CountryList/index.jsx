@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ListContainer } from "./CountryList.elements";
+import { ListContainer, FilterSection } from "./CountryList.elements";
 import SearchBar from "../SearchBar";
 import DropDownList from "../DropDownList";
 import CountryCard from "../CountryCard";
@@ -37,17 +37,20 @@ const CountryList = () => {
 
   return (
     <>
-      <SearchBar
-        query={searchQuery}
-        onQueryChange={setSearchQuery}
-        placeholder="Search for a country..."
-      />
-      <DropDownList
-        selected={filterRegion}
-        onSelectedChange={filterRegionHandler}
-        items={regions}
-        placeholder="Filter by Region"
-      />
+      <FilterSection>
+        <SearchBar
+          query={searchQuery}
+          onQueryChange={setSearchQuery}
+          placeholder="Search for a country..."
+        />
+        <DropDownList
+          selected={filterRegion}
+          onSelectedChange={filterRegionHandler}
+          items={regions}
+          placeholder="Filter by Region"
+        />
+      </FilterSection>
+
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
         <ListContainer>

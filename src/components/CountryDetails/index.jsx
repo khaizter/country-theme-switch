@@ -3,15 +3,17 @@ import { useParams } from "react-router-dom";
 import { CgArrowLeft } from "react-icons/cg";
 import {
   MainContainer,
-  Button,
   Flag,
   Label,
   DetailsContainer,
+  CountryHeading,
   NativeSection,
   TopLevelSection,
   BordersSection,
   BordersButtons,
+  BorderButton,
 } from "./CountryDetails.elements";
+import ButtonLink from "../../styled_globals/ButtonLink";
 import useHttp from "../../hooks/useHttp";
 
 const CountryDetails = () => {
@@ -93,16 +95,12 @@ const CountryDetails = () => {
 
   return (
     <>
-      <Button to="/countries">
-        <CgArrowLeft fontSize="2rem" />
-        Back
-      </Button>
       {isLoadingCountries && <div>Loading details...</div>}
       {!isLoadingCountries && (
         <MainContainer>
           <Flag src={flagSrc} alt="" />
           <DetailsContainer>
-            <h2>{name}</h2>
+            <CountryHeading>{name}</CountryHeading>
             <NativeSection>
               <p>
                 <Label>Native Name: </Label>
@@ -142,22 +140,16 @@ const CountryDetails = () => {
               <br />
             </TopLevelSection>
             <BordersSection>
-              <p>
-                <Label>Border Countries:</Label>
-              </p>
+              <Label>Border Countries:</Label>
               <BordersButtons>
                 {isLoadingBorderCountries && (
                   <div>Loading border countries...</div>
                 )}
                 {!isLoadingBorderCountries &&
                   borders?.map((border, index) => (
-                    <Button
-                      key={index}
-                      to={`/countries/${border.code}`}
-                      lower="true"
-                    >
+                    <BorderButton key={index} to={`/countries/${border.code}`}>
                       {border.name}
-                    </Button>
+                    </BorderButton>
                   ))}
                 {isErrorBorderCountries && (
                   <div>Fetching border countries failed!</div>

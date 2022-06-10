@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const MainContainer = styled(Link)`
+  width: min(100%, 23.75rem);
+  margin-inline: auto;
+  height: 100%;
   display: block;
   text-decoration: none;
   border-radius: 8px;
@@ -18,7 +21,7 @@ export const Thumbnail = styled.img`
 `;
 
 export const DetailsSection = styled.div`
-  padding: 1rem 1.875rem;
+  padding-inline: 1.875rem;
   padding-bottom: 2.75rem;
   p {
     font-size: 0.875rem;
@@ -27,5 +30,5 @@ export const DetailsSection = styled.div`
 `;
 
 export const Label = styled.span`
-  font-weight: 600;
+  font-weight: var(--fw-600);
 `;

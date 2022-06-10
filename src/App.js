@@ -3,6 +3,7 @@ import Header from "./layouts/Header";
 import Main from "./layouts/Main";
 import Footer from "./layouts/Footer";
 import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styled_globals/GlobalStyle";
 
 const light = {
   background: "hsl(0, 0%, 98%)",
@@ -19,7 +20,7 @@ const dark = {
 };
 
 function App() {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = useState(dark);
 
   const toggleThemeHandler = () => {
     setTheme((prevState) => (prevState === light ? dark : light));
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Header onToggleTheme={toggleThemeHandler} />
       <Main />
       {/* <Footer /> */}

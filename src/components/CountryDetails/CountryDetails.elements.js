@@ -1,50 +1,96 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { device } from "../../styled_globals/Devices";
+import ButtonLink from "../../styled_globals/ButtonLink";
 
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  font-size: 16px;
+  width: 100%;
   color: ${(props) => props.theme.foreground};
+
+  @media ${device.laptop} {
+    flex-direction: row;
+    gap: 5%;
+  }
+
+  @media ${device.desktop} {
+    gap: 10%;
+  }
+`;
+
+export const Flag = styled.img`
+  display: block;
+  aspect-ratio: 278/185;
+  flex-grow: 1;
+  align-self: stretch;
+  @media ${device.tabletS} {
+    width: min(80%, 33.125rem);
+    align-self: center;
+  }
+  @media ${device.laptop} {
+    align-self: flex-start;
+    aspect-ratio: 280/201;
+  }
 `;
 
 export const DetailsContainer = styled.div`
   display: grid;
-`;
+  grid-template-areas:
+    "heading"
+    "left-section"
+    "right-section"
+    "bottom-section";
+  @media ${device.tabletS} {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr max-content;
+    grid-template-areas:
+      "heading heading"
+      "left-section right-section"
+      "bottom-section bottom-section";
+  }
 
-export const Button = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  gap: 1.375rem;
-  width: max-content;
-  text-decoration: none;
-  font-weight: ${(props) => (props.lower ? "300" : "600")};
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  box-shadow: 0 0 ${(props) => (props.lower ? "5px" : "20px")}
-    rgba(0, 0, 0, 0.2);
-  background-color: ${(props) => props.theme.element};
-  color: inherit;
-`;
-
-export const Flag = styled.img`
-  width: 100%;
-  aspect-ratio: 278/185;
+  @media ${device.laptop} {
+    align-self: center;
+    width: 50%;
+  }
 `;
 
 export const Label = styled.span`
-  font-weight: 600;
+  font-weight: var(--fw-600);
 `;
 
-export const NativeSection = styled.section``;
+export const CountryHeading = styled.h2`
+  grid-area: heading;
+`;
 
-export const TopLevelSection = styled.section``;
+export const NativeSection = styled.section`
+  grid-area: left-section;
+`;
 
-export const BordersSection = styled.section``;
+export const TopLevelSection = styled.section`
+  grid-area: right-section;
+`;
+
+export const BordersSection = styled.section`
+  grid-area: bottom-section;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
+`;
 
 export const BordersButtons = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.625rem;
+`;
+
+export const BorderButton = styled(ButtonLink)`
+  padding-block: 0.5rem;
+  font-weight: var(--fw-300);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 `;

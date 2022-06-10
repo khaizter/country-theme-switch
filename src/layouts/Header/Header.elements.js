@@ -1,21 +1,33 @@
 import styled from "styled-components";
+import { device } from "../../styled_globals/Devices";
 
 export const MainContainer = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 2.5rem 1.25rem;
+  padding-block: 2.5rem;
+  padding-inline: 1.25rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
   background-color: ${(props) => props.theme.element};
   color: ${(props) => props.theme.foreground};
+
+  @media ${device.tablet} {
+    padding-inline: 5%;
+    padding-block: 2rem;
+  }
 `;
 
 export const Logo = styled.a`
   text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: var(--fs-600);
+  font-weight: var(--fw-800);
   color: inherit;
+  @media ${device.tablet} {
+    font-size: var(--fs-700);
+  }
+
+  @media ${device.desktop} {
+    font-size: var(--fs-800);
+  }
 `;
 
 export const Toggle = styled.button`
@@ -25,10 +37,19 @@ export const Toggle = styled.button`
   border: none;
   background: none;
   padding: 0;
-  font-weight: 600;
   color: inherit;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-600);
 
   svg {
     display: inline-block;
+  }
+
+  @media ${device.tablet} {
+    font-size: var(--fs-500);
+  }
+
+  @media ${device.desktop} {
+    font-size: var(--fs-600);
   }
 `;
