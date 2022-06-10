@@ -4,6 +4,7 @@ import SearchBar from "../SearchBar";
 import DropDownList from "../DropDownList";
 import CountryCard from "../CountryCard";
 import useHttp from "../../hooks/useHttp";
+import { AnimatePresence } from "framer-motion";
 
 const CountryList = () => {
   const [countries, isLoading, isError] = useHttp({
@@ -54,13 +55,11 @@ const CountryList = () => {
       {isLoading && <div>Loading...</div>}
       {!isLoading && (
         <ListContainer>
-          {filteredCountries?.map((country, index) => {
-            return (
-              <li key={index}>
-                <CountryCard data={country} />
-              </li>
-            );
-          })}
+          <AnimatePresence>
+            {filteredCountries?.map((country) => {
+              return <CountryCard data={country} key={country.cca2} />;
+            })}
+          </AnimatePresence>
         </ListContainer>
       )}
       {isError && <div>Failed!</div>}

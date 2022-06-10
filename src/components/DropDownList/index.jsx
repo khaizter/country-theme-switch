@@ -1,6 +1,32 @@
-import { MainContainer, Toggle, List, Item } from "./DropDownList.elements";
+import {
+  MainContainer,
+  Toggle,
+  List,
+  ListItem,
+  ItemButton,
+} from "./DropDownList.elements";
 import React, { useState } from "react";
-import { RiArrowDownSLine } from "react-icons/ri";
+import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
+import { AnimatePresence } from "framer-motion";
+
+const ListVariants = {
+  visible: {
+    height: "max-content",
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      staggerChildren: 0.08,
+    },
+  },
+  hidden: { height: 0, transition: { duration: 0.4, ease: "easeIn" } },
+};
+
+const ItemButtonVariants = {
+  visible: {
+    opacity: 1,
+  },
+  hidden: { opacity: 0 },
+};
 
 const DropDownList = ({ selected, onSelectedChange, items, placeholder }) => {
   const [showList, setShowList] = useState(false);
@@ -19,19 +45,31 @@ const DropDownList = ({ selected, onSelectedChange, items, placeholder }) => {
     <MainContainer>
       <Toggle onClick={toggleHandler}>
         {selected ? selected : placeholder}
-        <RiArrowDownSLine />
+        {showList ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
       </Toggle>
-      {showList && (
-        <List>
-          {items?.map((item, index) => {
-            return (
-              <li key={index}>
-                <Item onClick={selectHandler.bind(null, item)}>{item}</Item>
-              </li>
-            );
-          })}
-        </List>
-      )}
+      <AnimatePresence>
+        {showList && (
+          <List
+            variants={ListVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            {items?.map((item, index) => {
+              return (
+                <ListItem key={index}>
+                  <ItemButton
+                    variants={ItemButtonVariants}
+                    onClick={selectHandler.bind(null, item)}
+                  >
+                    {item}
+                  </ItemButton>
+                </ListItem>
+              );
+            })}
+          </List>
+        )}
+      </AnimatePresence>
     </MainContainer>
   );
 };

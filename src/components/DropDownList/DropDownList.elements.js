@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../styled_globals/Devices";
+import { motion } from "framer-motion";
 
 export const MainContainer = styled.div`
   align-self: flex-start;
@@ -15,9 +16,9 @@ export const Toggle = styled.button`
   padding-block: 1.25rem;
   padding-inline: 1.875rem;
   font-size: var(--fs-300);
-  width: 100%;
+  min-width: 15.875rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px -5px rgb(0 0 0 / 20%);
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
   background-color: ${(props) => props.theme.element};
   color: inherit;
   svg {
@@ -29,21 +30,30 @@ export const Toggle = styled.button`
   }
 `;
 
-export const List = styled.ul`
+export const List = styled(motion.ul)`
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
   width: 100%;
   margin: 0;
-  padding-block: 0.25rem;
   padding-inline: 0;
   list-style: none;
   border-radius: 8px;
-  box-shadow: 0 0 10px -5px rgb(0 0 0 / 20%);
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
   background-color: ${(props) => props.theme.element};
+  overflow: hidden;
 `;
 
-export const Item = styled.button`
+export const ListItem = styled.li`
+  &:first-child {
+    margin-top: 0.25rem;
+  }
+  &:last-child {
+    margin-bottom: 0.25rem;
+  }
+`;
+
+export const ItemButton = styled(motion.button)`
   text-align: start;
   background: none;
   border: none;

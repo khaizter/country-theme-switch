@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { device } from "../../styled_globals/Devices";
 import ButtonLink from "../../styled_globals/ButtonLink";
 

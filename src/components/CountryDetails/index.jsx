@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CgArrowLeft } from "react-icons/cg";
 import {
   MainContainer,
   Flag,
@@ -13,7 +12,6 @@ import {
   BordersButtons,
   BorderButton,
 } from "./CountryDetails.elements";
-import ButtonLink from "../../styled_globals/ButtonLink";
 import useHttp from "../../hooks/useHttp";
 
 const CountryDetails = () => {
@@ -78,7 +76,7 @@ const CountryDetails = () => {
         ].join(","),
       },
     });
-  }, [countryCode]);
+  }, [countryCode, setRequestCountries]);
 
   // Get border countries name
   useEffect(() => {
@@ -91,7 +89,7 @@ const CountryDetails = () => {
         codes: country?.borders.join(","),
       },
     });
-  }, [country]);
+  }, [country, setRequestBorderCountries]);
 
   return (
     <>

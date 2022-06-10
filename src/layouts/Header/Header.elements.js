@@ -40,6 +40,7 @@ export const Toggle = styled.button`
   color: inherit;
   font-size: var(--fs-400);
   font-weight: var(--fw-600);
+  position: relative;
 
   svg {
     display: inline-block;
