@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../styled_globals/Devices";
+import { motion } from "framer-motion";
 
 export const MainContainer = styled.header`
   display: flex;
@@ -16,7 +17,7 @@ export const MainContainer = styled.header`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(motion.a)`
   text-decoration: none;
   font-size: var(--fs-600);
   font-weight: var(--fw-800);
@@ -30,7 +31,7 @@ export const Logo = styled.a`
   }
 `;
 
-export const Toggle = styled.button`
+export const Toggle = styled(motion.button)`
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -41,6 +42,7 @@ export const Toggle = styled.button`
   font-size: var(--fs-400);
   font-weight: var(--fw-600);
   position: relative;
+  cursor: pointer;
 
   svg {
     display: inline-block;

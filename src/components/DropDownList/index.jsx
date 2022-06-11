@@ -43,7 +43,7 @@ const DropDownList = ({ selected, onSelectedChange, items, placeholder }) => {
 
   return (
     <MainContainer>
-      <Toggle onClick={toggleHandler}>
+      <Toggle whileHover={{ scale: 1.02 }} onClick={toggleHandler}>
         {selected ? selected : placeholder}
         {showList ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
       </Toggle>
@@ -59,6 +59,7 @@ const DropDownList = ({ selected, onSelectedChange, items, placeholder }) => {
               return (
                 <ListItem key={index}>
                   <ItemButton
+                    whileHover={{ x: 3, transition: { ease: "linear" } }}
                     variants={ItemButtonVariants}
                     onClick={selectHandler.bind(null, item)}
                   >

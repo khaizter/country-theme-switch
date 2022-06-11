@@ -1,14 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
   // typography variables (font-size, font-weight)
   :root {
-    --fs-300: 14px;
-    --fs-400: 16px;
-    --fs-500: 18px;
-    --fs-600: 20px;
-    --fs-700: 24px;
-    --fs-800: 28px;
+    --fs-300: 0.875rem;
+    --fs-400: 1rem;
+    --fs-500: 1.125rem;
+    --fs-600: 1.25rem;
+    --fs-700: 1.5rem;
+    --fs-800: 1.75rem;
 
     --fw-300: 300;
     --fw-600: 600;

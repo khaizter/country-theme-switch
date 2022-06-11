@@ -12,6 +12,7 @@ import {
   BordersButtons,
   BorderButton,
 } from "./CountryDetails.elements";
+import LoaderIcon from "../../icons/LoaderIcon";
 import useHttp from "../../hooks/useHttp";
 
 const CountryDetails = () => {
@@ -25,6 +26,8 @@ const CountryDetails = () => {
     isErrorBorderCountries,
     setRequestBorderCountries,
   ] = useHttp(null, false);
+
+  let errorBorderCountries = isErrorBorderCountries;
 
   const country = countries && countries[0];
   const flagSrc = country?.flags.png;
@@ -83,6 +86,11 @@ const CountryDetails = () => {
     if (!country) {
       return;
     }
+    if (!country?.borders.length) {
+      errorBorderCountries = false;
+      console.log(!errorBorderCountries && !country?.borders.length);
+      return;
+    }
     setRequestBorderCountries({
       url: "https://restcountries.com/v3.1/alpha/",
       params: {
@@ -93,7 +101,7 @@ const CountryDetails = () => {
 
   return (
     <>
-      {isLoadingCountries && <div>Loading details...</div>}
+      {isLoadingCountries && <LoaderIcon style={{ alignSelf: "center" }} />}
       {!isLoadingCountries && (
         <MainContainer>
           <Flag src={flagSrc} alt="" />
@@ -145,13 +153,18 @@ const CountryDetails = () => {
                 )}
                 {!isLoadingBorderCountries &&
                   borders?.map((border, index) => (
-                    <BorderButton key={index} to={`/countries/${border.code}`}>
+                    <BorderButton
+                      whileHover={{ y: "-3px" }}
+                      key={index}
+                      to={`/countries/${border.code}`}
+                    >
                       {border.name}
                     </BorderButton>
                   ))}
-                {isErrorBorderCountries && (
+                {errorBorderCountries && !!country?.borders.length && (
                   <div>Fetching border countries failed!</div>
                 )}
+                {!country?.borders.length && <div>No border countries.</div>}
               </BordersButtons>
             </BordersSection>
           </DetailsContainer>

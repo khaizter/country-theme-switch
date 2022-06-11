@@ -8,7 +8,7 @@ export const MainContainer = styled.div`
   color: ${(props) => props.theme.foreground};
 `;
 
-export const Toggle = styled.button`
+export const Toggle = styled(motion.button)`
   border: none;
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@ export const ListItem = styled.li`
 
 export const ItemButton = styled(motion.button)`
   text-align: start;
-  background: none;
+  background-color: rgba(0, 0, 0, 0);
   border: none;
   display: block;
   width: 100%;

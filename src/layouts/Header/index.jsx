@@ -1,21 +1,15 @@
 import React from "react";
 import { MainContainer, Logo, Toggle } from "./Header.elements";
-import { BsMoon, BsMoonFill } from "react-icons/bs";
-import { motion } from "framer-motion";
 import MoonIcon from "../../icons/MoonIcon";
-import FillMoonIcon from "../../icons/FillMoonIcon";
-import styled from "styled-components";
-
-const MotionMoon = motion(MoonIcon);
-const MotionFillMoon = motion(FillMoonIcon);
 
 const Header = ({ onToggleTheme }) => {
   return (
     <MainContainer>
-      <Logo href="#">Where in the world?</Logo>
-      <Toggle onClick={onToggleTheme}>
-        <MotionMoon />
-        <MotionFillMoon />
+      <Logo whileHover={{ scale: 1.05 }} href="#">
+        Where in the world?
+      </Logo>
+      <Toggle whileHover={{ scale: 1.05 }} onClick={onToggleTheme}>
+        <MoonIcon />
         Dark Mode
       </Toggle>
     </MainContainer>

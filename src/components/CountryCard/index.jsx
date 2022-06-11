@@ -17,8 +17,9 @@ const CountryCard = ({ data }) => {
       layout
       animate={{ opacity: 1, transition: { ease: "easeInOut" } }}
       initial={{ opacity: 0, transition: { ease: "easeInOut" } }}
-      exit={{ opacity: 0, transition: { ease: "easeInOut", duration: 0.3 } }}
+      exit={{ opacity: 0, transition: { ease: "easeInOut", duration: 0.07 } }}
       transition={{ layout: { ease: "easeInOut", duration: 0.3 } }}
+      whileHover={{ y: -8 }}
     >
       <Clickable to={`/countries/${data.cca2}`} onClick={clickHandler}>
         <Thumbnail src={data.flags.png} alt={`${data.name.common} flag`} />

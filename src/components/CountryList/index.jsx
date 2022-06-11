@@ -5,6 +5,7 @@ import DropDownList from "../DropDownList";
 import CountryCard from "../CountryCard";
 import useHttp from "../../hooks/useHttp";
 import { AnimatePresence } from "framer-motion";
+import LoaderIcon from "../../icons/LoaderIcon";
 
 const CountryList = () => {
   const [countries, isLoading, isError] = useHttp({
@@ -52,7 +53,7 @@ const CountryList = () => {
         />
       </FilterSection>
 
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <LoaderIcon style={{ alignSelf: "center" }} />}
       {!isLoading && (
         <ListContainer>
           <AnimatePresence>
