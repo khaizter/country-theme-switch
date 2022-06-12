@@ -18,6 +18,7 @@ const Main = () => {
             path="/countries/:countryCode"
             element={<CountryDetailsPage />}
           />
+          <Route path="*" element={<Navigate to="/countries" />} />
         </Routes>
       </AnimatePresence>
     </MainContainer>

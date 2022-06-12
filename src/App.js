@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styled_globals/GlobalStyle";
 
 function App() {
-  const [theme, setTheme] = useState(dark);
+  const [theme, setTheme] = useState(light);
 
   const toggleThemeHandler = () => {
     setTheme((prevState) => (prevState === light ? dark : light));
