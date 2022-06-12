@@ -20,7 +20,7 @@ export const ListContainer = styled(motion.ul)`
   }
 `;
 
-export const FilterSection = styled.section`
+export const FilterContainer = styled.div`
   align-self: stretch;
   display: flex;
   flex-direction: column;

@@ -45,7 +45,11 @@ const DropDownList = ({ selected, onSelectedChange, items, placeholder }) => {
     <MainContainer>
       <Toggle whileHover={{ scale: 1.02 }} onClick={toggleHandler}>
         {selected ? selected : placeholder}
-        {showList ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
+        {showList ? (
+          <RiArrowUpSLine aria-hidden="true" />
+        ) : (
+          <RiArrowDownSLine aria-hidden="true" />
+        )}
       </Toggle>
       <AnimatePresence>
         {showList && (

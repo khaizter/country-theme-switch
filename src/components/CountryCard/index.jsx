@@ -8,10 +8,6 @@ import {
 } from "./CountryCard.elements";
 
 const CountryCard = ({ data }) => {
-  const clickHandler = () => {
-    console.log(data);
-  };
-
   return (
     <MainContainer
       layout
@@ -21,7 +17,7 @@ const CountryCard = ({ data }) => {
       transition={{ layout: { ease: "easeInOut", duration: 0.3 } }}
       whileHover={{ y: -8 }}
     >
-      <Clickable to={`/countries/${data.cca2}`} onClick={clickHandler}>
+      <Clickable to={`/countries/${data.cca2}`}>
         <Thumbnail src={data.flags.png} alt={`${data.name.common} flag`} />
         <DetailsSection>
           <h3>{data.name.common}</h3>

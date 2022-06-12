@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+    height: 100%;
   }
 
   *,
@@ -32,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-size: var(--fs-400);
     background-color: ${[(props) => props.theme.background]};
+    height: 100%;
   }
   
   
@@ -52,6 +54,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: inherit;
   }
 
+  #root {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
 `;
 
 export default GlobalStyle;

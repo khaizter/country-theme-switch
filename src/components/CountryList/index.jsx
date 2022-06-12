@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ListContainer, FilterSection } from "./CountryList.elements";
+import { ListContainer, FilterContainer } from "./CountryList.elements";
 import SearchBar from "../SearchBar";
 import DropDownList from "../DropDownList";
 import CountryCard from "../CountryCard";
@@ -39,7 +39,7 @@ const CountryList = () => {
 
   return (
     <>
-      <FilterSection>
+      <FilterContainer>
         <SearchBar
           query={searchQuery}
           onQueryChange={setSearchQuery}
@@ -51,18 +51,25 @@ const CountryList = () => {
           items={regions}
           placeholder="Filter by Region"
         />
-      </FilterSection>
+      </FilterContainer>
 
       {isLoading && <LoaderIcon style={{ alignSelf: "center" }} />}
       {!isLoading && (
-        <ListContainer>
-          <AnimatePresence>
-            {filteredCountries?.map((country) => {
-              return <CountryCard data={country} key={country.cca2} />;
-            })}
-          </AnimatePresence>
-        </ListContainer>
+        <>
+          {filteredCountries?.length === 0 ? (
+            <div>There is nothing to show :(</div>
+          ) : (
+            <ListContainer>
+              <AnimatePresence>
+                {filteredCountries?.map((country) => {
+                  return <CountryCard data={country} key={country.cca2} />;
+                })}
+              </AnimatePresence>
+            </ListContainer>
+          )}
+        </>
       )}
+
       {isError && <div>Failed!</div>}
     </>
   );

@@ -9,7 +9,7 @@ const Header = ({ onToggleTheme }) => {
         Where in the world?
       </Logo>
       <Toggle whileHover={{ scale: 1.05 }} onClick={onToggleTheme}>
-        <MoonIcon />
+        <MoonIcon aria-hidden="true" />
         Dark Mode
       </Toggle>
     </MainContainer>

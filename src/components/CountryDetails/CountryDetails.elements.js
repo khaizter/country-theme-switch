@@ -34,7 +34,7 @@ export const Flag = styled.img`
   }
 `;
 
-export const DetailsContainer = styled.div`
+export const DetailsSection = styled.section`
   display: grid;
   grid-template-areas:
     "heading"
@@ -64,15 +64,15 @@ export const CountryHeading = styled.h2`
   grid-area: heading;
 `;
 
-export const NativeSection = styled.section`
+export const NativeContainer = styled.div`
   grid-area: left-section;
 `;
 
-export const TopLevelSection = styled.section`
+export const TopLevelContainer = styled.div`
   grid-area: right-section;
 `;
 
-export const BordersSection = styled.section`
+export const BordersContainer = styled.div`
   grid-area: bottom-section;
   display: flex;
   flex-direction: column;

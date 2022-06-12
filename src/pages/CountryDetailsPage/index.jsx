@@ -19,7 +19,7 @@ const CountryDetailsPage = () => {
       transition={{ ease: "easeInOut" }}
     >
       <BackButton whileHover={{ x: "5px" }} to="/countries">
-        <CgArrowLeft fontSize="2rem" />
+        <CgArrowLeft fontSize="2rem" aria-hidden="true" />
         Back
       </BackButton>
       <CountryDetails />

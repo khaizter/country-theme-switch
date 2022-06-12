@@ -4,11 +4,11 @@ import {
   MainContainer,
   Flag,
   Label,
-  DetailsContainer,
+  DetailsSection,
   CountryHeading,
-  NativeSection,
-  TopLevelSection,
-  BordersSection,
+  NativeContainer,
+  TopLevelContainer,
+  BordersContainer,
   BordersButtons,
   BorderButton,
 } from "./CountryDetails.elements";
@@ -88,7 +88,6 @@ const CountryDetails = () => {
     }
     if (!country?.borders.length) {
       errorBorderCountries = false;
-      console.log(!errorBorderCountries && !country?.borders.length);
       return;
     }
     setRequestBorderCountries({
@@ -103,74 +102,81 @@ const CountryDetails = () => {
     <>
       {isLoadingCountries && <LoaderIcon style={{ alignSelf: "center" }} />}
       {!isLoadingCountries && (
-        <MainContainer>
-          <Flag src={flagSrc} alt="" />
-          <DetailsContainer>
-            <CountryHeading>{name}</CountryHeading>
-            <NativeSection>
-              <p>
-                <Label>Native Name: </Label>
-                {nativeName}
-              </p>
-              <p>
-                <Label>Population: </Label>
-                {population}
-              </p>
-              <p>
-                <Label>Region: </Label>
-                {region}
-              </p>
-              <p>
-                <Label>Sub Region: </Label>
-                {subRegion}
-              </p>
-              <p>
-                <Label>Capital: </Label>
-                {capital}
-              </p>
-              <br />
-            </NativeSection>
-            <TopLevelSection>
-              <p>
-                <Label>Top Level Domain: </Label>
-                {topLevelDomain}
-              </p>
-              <p>
-                <Label>Currencies: </Label>
-                {currencies?.join(", ")}
-              </p>
-              <p>
-                <Label>Languages: </Label>
-                {languages?.join(", ")}
-              </p>
-              <br />
-            </TopLevelSection>
-            <BordersSection>
-              <Label>Border Countries:</Label>
-              <BordersButtons>
-                {isLoadingBorderCountries && (
-                  <div>Loading border countries...</div>
-                )}
-                {!isLoadingBorderCountries &&
-                  borders?.map((border, index) => (
-                    <BorderButton
-                      whileHover={{ y: "-3px" }}
-                      key={index}
-                      to={`/countries/${border.code}`}
-                    >
-                      {border.name}
-                    </BorderButton>
-                  ))}
-                {errorBorderCountries && !!country?.borders.length && (
-                  <div>Fetching border countries failed!</div>
-                )}
-                {!country?.borders.length && <div>No border countries.</div>}
-              </BordersButtons>
-            </BordersSection>
-          </DetailsContainer>
-        </MainContainer>
+        <>
+          {isErrorCountries ? (
+            <div>Fetching details failed!</div>
+          ) : (
+            <MainContainer>
+              <Flag src={flagSrc} alt={`${name} flag`} />
+              <DetailsSection>
+                <CountryHeading>{name}</CountryHeading>
+                <NativeContainer>
+                  <p>
+                    <Label>Native Name: </Label>
+                    {nativeName}
+                  </p>
+                  <p>
+                    <Label>Population: </Label>
+                    {population}
+                  </p>
+                  <p>
+                    <Label>Region: </Label>
+                    {region}
+                  </p>
+                  <p>
+                    <Label>Sub Region: </Label>
+                    {subRegion}
+                  </p>
+                  <p>
+                    <Label>Capital: </Label>
+                    {capital}
+                  </p>
+                  <br />
+                </NativeContainer>
+                <TopLevelContainer>
+                  <p>
+                    <Label>Top Level Domain: </Label>
+                    {topLevelDomain}
+                  </p>
+                  <p>
+                    <Label>Currencies: </Label>
+                    {currencies?.join(", ")}
+                  </p>
+                  <p>
+                    <Label>Languages: </Label>
+                    {languages?.join(", ")}
+                  </p>
+                  <br />
+                </TopLevelContainer>
+                <BordersContainer>
+                  <Label>Border Countries:</Label>
+                  <BordersButtons>
+                    {isLoadingBorderCountries && (
+                      <div>Loading border countries...</div>
+                    )}
+                    {!isLoadingBorderCountries &&
+                      borders?.map((border, index) => (
+                        <BorderButton
+                          whileHover={{ y: "-3px" }}
+                          key={index}
+                          to={`/countries/${border.code}`}
+                        >
+                          {border.name}
+                        </BorderButton>
+                      ))}
+                    {errorBorderCountries && !!country?.borders.length && (
+                      <div>Fetching border countries failed!</div>
+                    )}
+                    {!country?.borders.length && (
+                      <div>No border countries.</div>
+                    )}
+                  </BordersButtons>
+                </BordersContainer>
+              </DetailsSection>
+            </MainContainer>
+          )}
+        </>
       )}
-      {isErrorCountries && <div>Fetching details failed!</div>}
     </>
   );
 };

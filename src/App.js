@@ -18,7 +18,7 @@ function App() {
       <GlobalStyle />
       <Header onToggleTheme={toggleThemeHandler} />
       <Main />
-      {/* <Footer /> */}
+      <Footer />
     </ThemeProvider>
   );
 }
